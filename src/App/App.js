@@ -4,6 +4,9 @@ import SideMenu from '../components/SideMenu';
 // import SideMenuWithStyle from '../components/SideMenuWithStyle';
 import {CssBaseline, makeStyles} from '@material-ui/core'
 import Header from '../components/Header';
+import PageHeader from '../components/PageHeader';
+import PeopleOutlineTwoTone from '@material-ui/icons/PeopleOutlineTwoTone';
+
 
 const useStyles = makeStyles({
   appMain:{
@@ -18,9 +21,14 @@ function App() {
     <>
       <SideMenu />
       <div className={classes.appMain}>
-          <Header/>
+          <Header />
+          <PageHeader 
+            title ="Page Header"
+            subTitle = "Page description"
+            icon = {<PeopleOutlineTwoTone  fontSize='large'/>}
+          />
       </div>
-      <CssBaseline />
+      <CssBaseline /> //adding CSS common rules
     </>
   );
 }
