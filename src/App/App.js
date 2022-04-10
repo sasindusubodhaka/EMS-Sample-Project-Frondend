@@ -6,6 +6,7 @@ import {CssBaseline, makeStyles} from '@material-ui/core'
 import Header from '../components/Header';
 import PageHeader from '../components/PageHeader';
 import PeopleOutlineTwoTone from '@material-ui/icons/PeopleOutlineTwoTone';
+import Employees from '../pages/Employees/Employees';
 
 
 const useStyles = makeStyles({
@@ -21,12 +22,8 @@ function App() {
     <>
       <SideMenu />
       <div className={classes.appMain}>
-          <Header />
-          <PageHeader 
-            title ="Page Header"
-            subTitle = "Page description"
-            icon = {<PeopleOutlineTwoTone  fontSize='large'/>}
-          />
+          <Header />  
+          <Employees />
       </div>
       <CssBaseline /> //adding CSS common rules
     </>
