@@ -7,6 +7,9 @@ import Header from '../components/Header';
 import PageHeader from '../components/PageHeader';
 import PeopleOutlineTwoTone from '@material-ui/icons/PeopleOutlineTwoTone';
 import Employees from '../pages/Employees/Employees';
+import { Router,Route,Switch } from 'react-router-dom';
+import {Provider} from 'react-redux'
+import history from '../@history'
 
 
 const useStyles = makeStyles({

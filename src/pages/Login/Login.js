@@ -9,13 +9,13 @@ const useStyles = makeStyles({
     backgroundColor: '#2d919b'
   },
   paperStyle: {
-    padding: 20,
+    padding: '20px ',
     height: '50vh',
     width: 300,
-    margin: "20px auto"
+    margin: " 100px auto"
   },
-  btnStyle:{
-    margin:'8px 0'
+  btnStyle: {
+    margin: '8px 0'
   }
 })
 
@@ -49,7 +49,8 @@ const Login = () => {
         <Typography>
           <Link href="#" >forgot password</Link>
         </Typography>
-        <Typography>Do you have account?
+        <Typography>
+          Do you have account?
           <Link href="#" >Sign up </Link>
         </Typography>
       </Paper>
