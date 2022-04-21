@@ -12,6 +12,9 @@ const LoginReducer = function(state = initialState, action){
                 userCredentials:{...action.payload}
             }
         }
+        default:{
+            return state;
+        }
     }
 }
 

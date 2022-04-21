@@ -9,7 +9,7 @@ import * as Action from './store/action'
 import validator from 'validator';
 import * as _ from 'lodash'
 import { useDispatch } from 'react-redux'
-
+import { Form, Input, Button, Checkbox } from 'antd'
 
 const useStyles = makeStyles({
   avatarStyle: {
@@ -93,9 +93,7 @@ const Login = () => {
   const onMyChange = (v) => {
     let value = v.target.value
     let name = v.target.name
-    console.log(value,name)
     setFormValue({ ...formValue, [name]: value })
-    
   }
 
   return (
@@ -113,7 +111,7 @@ const Login = () => {
             label="Username"
             placeholder='Enter username'
             fullWidth='fulWidth required'
-            onChange={onMyChange}
+            // onChange={(e)=>onMyChange(e)}
           />
           <Grid>
             {Object.keys(errors.userNameErrors).map((key, index) => {
@@ -132,7 +130,7 @@ const Login = () => {
             type='password'
             fullWidth='fulWidth required'
             name="password"
-            onChange={onMyChange}
+            //  onChange={(e)=>onMyChange(e,password)}
           />
           <Grid>
             {Object.keys(errors.passwordErors).map((key, index) => {
@@ -171,5 +169,5 @@ const Login = () => {
     </Grid>
   )
 }
-// export default Login;
-export default WithReducer('log', reducer)(Login)
+
+export default WithReducer('LoginData', reducer)(Login)
