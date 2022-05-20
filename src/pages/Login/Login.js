@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Avatar, Grid, Paper, makeStyles, TextField, Button, Typography, Link, FormControl } from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -9,7 +9,7 @@ import * as Action from './store/action'
 import validator from 'validator';
 import * as _ from 'lodash'
 import { useDispatch } from 'react-redux'
-
+import axios from "axios";
 
 const useStyles = makeStyles({
   avatarStyle: {
@@ -36,7 +36,7 @@ let initialError = {
   passwordErors: {}
 }
 
-const Login = () => {
+const Login = () => { 
 
   const classes = useStyles();
 
@@ -45,15 +45,15 @@ const Login = () => {
   const [errors, setErrors] = useState({ ...initialError })
   const [showPassword, setShowPassword] = useState(false)
 
-  // const dispatch =  useDispatch();
+  const dispatch = useDispatch();
 
   const onSubmit = (e) => {
     e.preventDefault()
     const isValid = validation()
 
     if (isValid) {
-      let data = { userName: formValue.userName, password: formValue.password }
-      // dispatch(Action.getUserCredentials)
+      let data = { email: formValue.userName, password: formValue.password }
+      dispatch(Action.userLogin(data));
     }
     else {
       console.log('fail')
@@ -65,10 +65,11 @@ const Login = () => {
     let isValid = true
 
     //validating userName
-    if (validator.isEmail(formValue.userName)) {
+    if (!validator.isEmail(formValue.userName)) {
       let invalidUserName = Object.assign({}, { invalidUserName: 'invalid user name' })
       localErrors.userNameErrors = invalidUserName
       isValid = false
+      console.log("isvalid:", isValid)
     }
     else {
       localErrors.userNameErrors.invalidUserName = null
@@ -93,9 +94,8 @@ const Login = () => {
   const onMyChange = (v) => {
     let value = v.target.value
     let name = v.target.name
-    console.log(value,name)
     setFormValue({ ...formValue, [name]: value })
-    
+
   }
 
   return (
@@ -107,57 +107,54 @@ const Login = () => {
         </Grid>
 
         {/* <FormControl> */}
-          <TextField
-            value={formValue.userName}
-            name="userName"
-            label="Username"
-            placeholder='Enter username'
-            fullWidth='fulWidth required'
-            onChange={onMyChange}
-          />
-          <Grid>
-            {Object.keys(errors.userNameErrors).map((key, index) => {
-              return (
-                <div key={index} style={{ color: 'red' }}>
-                  {errors.userNameErrors[key]}
-                </div>
-              )
-            })}
-          </Grid>
+        <TextField
+          value={formValue.userName}
+          name="userName"
+          label="Username"
+          placeholder='Enter username'
+          fullWidth='fulWidth required'
+          onChange={onMyChange}
+        />
+        <Grid>
+          {Object.keys(errors.userNameErrors).map((key, index) => {
+            return (
+              <div key={index} style={{ color: 'red' }}>
+                {errors.userNameErrors[key]}
+              </div>
+            )
+          })}
+        </Grid>
 
-          <TextField
-            value={formValue.password}
-            label="Password"
-            placeholder='Enter password'
-            type='password'
-            fullWidth='fulWidth required'
-            name="password"
-            onChange={onMyChange}
-          />
-          <Grid>
-            {Object.keys(errors.passwordErors).map((key, index) => {
-              return (
-                <div key={index} style={{ color: 'red' }}>
-                  {errors.passwordErors[key]}
-                </div>
-              )
-            })}
-          </Grid>
-          <FormControlLabel
-            control={
-              <Checkbox
-                // checked={state.checkedB}
-                // onChange={handleChange}
-                name="checkedB"
-                color="primary"
-              />
-            }
-            label="Remember me"
-          />
-          <Button type='submit' color='primary' className={classes.btnStyle} variant='contained' fullWidth>Sign in </Button>
-
-        {/* </FormControl> */}
-
+        <TextField
+          value={formValue.password}
+          label="Password"
+          placeholder='Enter password'
+          type='password'
+          fullWidth='fulWidth required'
+          name="password"
+          onChange={onMyChange}
+        />
+        <Grid>
+          {Object.keys(errors.passwordErors).map((key, index) => {
+            return (
+              <div key={index} style={{ color: 'red' }}>
+                {errors.passwordErors[key]}
+              </div>
+            )
+          })}
+        </Grid>
+        <FormControlLabel
+          control={
+            <Checkbox
+              // checked={state.checkedB}
+              // onChange={handleChange}
+              name="checkedB"
+              color="primary"
+            />
+          }
+          label="Remember me"
+        />
+        <Button type='submit' color='primary' className={classes.btnStyle} variant='contained' fullWidth onClick={onSubmit}>Sign in </Button>
 
         <Typography>
           <Link href="#" >forgot password</Link>
