@@ -4,10 +4,11 @@ import Header from '../../components/Header'
 import Employees from '../Employees/Employees'
 
 function Dashboard() {
+    // const classes = useStyles();
     return (
         <>
             <SideMenu />
-            <div className={classes.appMain}>
+            <div>
                 <Header />
                 <Employees />
             </div>

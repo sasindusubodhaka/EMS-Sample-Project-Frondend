@@ -36,7 +36,7 @@ let initialError = {
   passwordErors: {}
 }
 
-const Login = () => { 
+const Login = () => {
 
   const classes = useStyles();
 
@@ -53,7 +53,7 @@ const Login = () => {
 
     if (isValid) {
       let data = { email: formValue.userName, password: formValue.password }
-      dispatch(Action.userLogin(data));
+      dispatch(Action.UserLogin(data));
     }
     else {
       console.log('fail')
@@ -98,6 +98,8 @@ const Login = () => {
 
   }
 
+
+
   return (
     <Grid> {/* nothing but div */}
       <Paper elevation={10} className={classes.paperStyle}>
@@ -112,7 +114,7 @@ const Login = () => {
           name="userName"
           label="Username"
           placeholder='Enter username'
-          fullWidth='fulWidth required'
+          fullWidth={true}
           onChange={onMyChange}
         />
         <Grid>
@@ -130,7 +132,7 @@ const Login = () => {
           label="Password"
           placeholder='Enter password'
           type='password'
-          fullWidth='fulWidth required'
+          fullWidth={true}
           name="password"
           onChange={onMyChange}
         />

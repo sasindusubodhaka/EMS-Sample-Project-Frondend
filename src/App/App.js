@@ -1,26 +1,22 @@
 import './App.css';
 import '../components/SideMenu'
-import SideMenu from '../components/SideMenu';
-// import SideMenuWithStyle from '../components/SideMenuWithStyle';
-import { CssBaseline, makeStyles } from '@material-ui/core'
-import Header from '../components/Header';
-import PageHeader from '../components/PageHeader';
-import PeopleOutlineTwoTone from '@material-ui/icons/PeopleOutlineTwoTone';
-import Employees from '../pages/Employees/Employees';
-import { BrowserRouter as Router, Route,Routes} from 'react-router-dom';
+import { CssBaseline } from '@material-ui/core'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux'
-import history from '../@history'
 import store from '../store/index';
 import React from 'react';
+import Login from '../pages/Login/Login'
+import History from '../@history';
+import Dashboard2 from '../pages/Dashboard/Dashboard2'
 
-const Login = React.lazy(() => import('../pages/Login/Login'))
 
-const useStyles = makeStyles({
-  appMain: {
-    paddingLeft: '320px',
-    width: '100%'
-  }
-})
+
+// const useStyles = makeStyles({
+//   appMain: {
+//     paddingLeft: '320px',
+//     width: '100%'
+//   }
+// })
 
 const loading = (
   <div className='pt-3 text-center'>
@@ -28,17 +24,20 @@ const loading = (
   </div>
 )
 
-function App() {
-  const classes = useStyles();
+const App=()=> {
+ 
   return (
     <>
       <Provider store={store}>
-        <Router history={history}>
+        <Router history={History} forceRefresh={true}>
         <React.Suspense fallback={loading}>
           <Routes>
-            <Route path='/' element={<Login />} />
+            <Route path="/login" element={<Login />}  ></Route>
+            <Route path="/dashboard" element={<Dashboard2 />}></Route>
+            {/* <Route exact path='/admin/dashboard' element={<Dashboard/>} /> */}
+
           </Routes>
-          </React.Suspense>
+        </React.Suspense>
         </Router>
         <CssBaseline />
         {/* //adding CSS common rules */}
