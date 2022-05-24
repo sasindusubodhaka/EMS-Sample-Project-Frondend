@@ -1,5 +1,4 @@
 import './App.css';
-import '../components/SideMenu'
 import { CssBaseline } from '@material-ui/core'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux'
@@ -7,16 +6,9 @@ import store from '../store/index';
 import React from 'react';
 import Login from '../pages/Login/Login'
 import History from '../@history';
-import Dashboard2 from '../pages/Dashboard/Dashboard2'
+import Home from '../pages/Home/Home';
+import DashboardBase from '../pages/Dashboard/DashboardBase';
 
-
-
-// const useStyles = makeStyles({
-//   appMain: {
-//     paddingLeft: '320px',
-//     width: '100%'
-//   }
-// })
 
 const loading = (
   <div className='pt-3 text-center'>
@@ -32,10 +24,9 @@ const App=()=> {
         <Router history={History} forceRefresh={true}>
         <React.Suspense fallback={loading}>
           <Routes>
-            <Route path="/login" element={<Login />}  ></Route>
-            <Route path="/dashboard" element={<Dashboard2 />}></Route>
-            {/* <Route exact path='/admin/dashboard' element={<Dashboard/>} /> */}
-
+            <Route path="/" element={<Home/>}></Route>
+            <Route path="/login" element={<Login />}></Route> 
+            <Route path="/admin/dashboard" element={<DashboardBase/>}></Route> 
           </Routes>
         </React.Suspense>
         </Router>
