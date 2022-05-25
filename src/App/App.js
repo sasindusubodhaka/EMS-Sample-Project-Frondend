@@ -30,7 +30,7 @@ const App=()=> {
           </Routes>
         </React.Suspense>
         </Router>
-        <CssBaseline />
+        {/* <CssBaseline /> */}
         {/* //adding CSS common rules */}
       </Provider>
 

@@ -9,9 +9,6 @@ const Topbar = () => {
             <div className='topbarWrapper'>
                 <div className='topLeft'>
                     <div className='logoContainer'>
-                        <img className='logo' src="/images/ems_logo.png" alt="logo" />
-                    </div>
-                    <div className='logoContainer'>
                         <span className='system'>EMS</span>
                     </div>
                 </div>
@@ -26,7 +23,7 @@ const Topbar = () => {
                     <div className='topbarIconContainer'>
                         <Settings />
                     </div>
-                    <img src="/images/profile.jpg" className='topAvator'  alt="profile"/>
+                    <img src="/images/profile.jpg" className='topAvator' alt="profile" />
                 </div>
             </div>
         </div>
