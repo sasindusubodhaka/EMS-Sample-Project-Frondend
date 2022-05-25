@@ -1,9 +1,13 @@
 import React from 'react'
 import './topbar.css'
-import { NotificationsNone, Language, Settings } from '@material-ui/icons'
-
+import { NotificationsNone, Language, Settings ,ExitToApp} from '@material-ui/icons'
+import { useNavigate } from 'react-router-dom'
 
 const Topbar = () => {
+    const navigate = useNavigate();
+    const exit=()=>{
+        navigate('/login')
+    }
     return (
         <div className='topbar'>
             <div className='topbarWrapper'>
@@ -24,6 +28,9 @@ const Topbar = () => {
                         <Settings />
                     </div>
                     <img src="/images/profile.jpg" className='topAvator' alt="profile" />
+                    <div className='topbarIconContainer'>
+                        <ExitToApp onClick={exit}/>
+                    </div>
                 </div>
             </div>
         </div>

@@ -16,7 +16,7 @@ export const adminMenuItems = [
       {
         icon: <Create style={{ color: '#fff' }} />,
         name: 'Create',
-        url: '/admin/createdepartments',
+        url: '/admin/createdepartment',
       },
       {
         icon: <ViewList style={{ color: '#fff' }} />,
