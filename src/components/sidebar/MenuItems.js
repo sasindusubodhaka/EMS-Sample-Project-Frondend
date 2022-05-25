@@ -1,48 +1,56 @@
 import React from 'react'
 import DashboardIcon from '@material-ui/icons/Dashboard'
-// import PeopleIcon from '@material-ui/icons/People'
-// import AssignmentIndIcon from '@material-ui/icons/AssignmentInd'
-// import AssignmentIcon from '@material-ui/icons/Assignment'
-// import BarChartIcon from '@material-ui/icons/BarChart'
-import PersonIcon from '@material-ui/icons/Person'
-// import ScheduleIcon from '@material-ui/icons/Schedule'
-// import SendIcon from '@material-ui/icons/Send'
-// import HistoryIcon from '@material-ui/icons/History'
-// import ListAltIcon from '@material-ui/icons/ListAlt'
+import { AccountBalance, People, Create, CallToAction, Mail, ViewList, PersonAdd } from '@material-ui/icons'
+
 
 export const adminMenuItems = [
-    {
-      icon: <DashboardIcon style={{ color: '#fff' }} />,
-      name: 'Dashboard',
-      url: '/admin/dashboard',
-    },
-    {
-      icon: <PersonIcon style={{ color: '#fff' }} />,
-      name: 'Manage Doctors',
-      children: [
-        {
-          name: 'View Doctors',
-          url: '/admin/viewdoctors',
-        },
-        {
-          name: 'Register Doctors',
-          url: '/admin/registerdoctors',
-        },
-      ],
-    },
-    {
-      icon: <PersonIcon style={{ color: '#fff' }} />,
-      name: 'Manage Nurses',
-      url: '',
-      children: [
-        {
-          name: 'View Nurses',
-          url: '/admin/viewnurse',
-        },
-        {
-          name: 'Register Nurse',
-          url: '/admin/registernurse',
-        },
-      ],
-    }
+  {
+    icon: <DashboardIcon style={{ color: '#fff' }} />,
+    name: 'Dashboard',
+    url: '/admin/dashboard',
+  },
+  {
+    icon: <AccountBalance style={{ color: '#fff' }} />,
+    name: 'Departments',
+    children: [
+      {
+        icon: <Create style={{ color: '#fff' }} />,
+        name: 'Create',
+        url: '/admin/createdepartments',
+      },
+      {
+        icon: <ViewList style={{ color: '#fff' }} />,
+        name: 'View',
+        url: '/admin/viewdepartments',
+      },
+    ],
+  },
+  {
+    icon: <People style={{ color: '#fff' }} />,
+    name: 'Manage Users',
+    url: '',
+    children: [
+      {
+        icon: <PersonAdd style={{ color: '#fff' }} />,
+        name: 'Add Users',
+        url: '/admin/registerusers',
+      },
+      {
+        icon: <ViewList style={{ color: '#fff' }} />,
+        name: 'View',
+        url: '/admin/viewusers',
+      },
+    ],
+  },
+  {
+    icon: <CallToAction style={{ color: '#fff' }} />,
+    name: 'Staff Notice',
+    url: '',
+  },
+  {
+    icon: <Mail style={{ color: '#fff' }} />,
+    name: 'Mail',
+    url: ''
+  }
+
 ]

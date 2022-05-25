@@ -1,6 +1,5 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import Drawer from '@material-ui/core/Drawer'
 import List from '@material-ui/core/List'
 import Divider from '@material-ui/core/Divider'
 import ListItem from '@material-ui/core/ListItem'
@@ -16,11 +15,11 @@ const useStyles = makeStyles((theme) => ({
     },
     drawer: {
         width: sidebarWidth,
-        flexShrink: 0,    
+        flexShrink: 0,
     },
     drawerPaper: {
         width: sidebarWidth,
-     
+
     },
     listItem: {
         backgroundColor: '#000045',
@@ -41,21 +40,13 @@ const useStyles = makeStyles((theme) => ({
 }))
 const Sidebar = (props) => {
     const classes = useStyles()
-    const navigate= useNavigate()
+    const navigate = useNavigate()
     return (
-        <>
-        {/* <Drawer
-            className={classes.drawer}
-            variant='permanent'
-            classes={{
-                paper: classes.drawerPaper,
-            }}
-            anchor='left'
-        > */}
+        <>       
             <div className={classes.toolbar} />
             <Divider />
             <List style={{ minWidth: 'inherit' }}>
-                <ListItem style={{ height: '100px' }}>
+                <ListItem style={{ height: '75px' }}>
                     <div
                         style={{
                             display: 'flex',
@@ -78,10 +69,9 @@ const Sidebar = (props) => {
                                     button
                                     key={child.name}
                                     className={classes.sbListitem}
-                                    onClick={(
-                                        n
-                                    ) => navigate(child.url)}
+                                    onClick={() => navigate(child.url)}
                                 >
+                                    <ListItemIcon>{child.icon}</ListItemIcon>
                                     <ListItemText>{child.name}</ListItemText>
                                 </ListItem>
                             ))}
@@ -103,7 +93,7 @@ const Sidebar = (props) => {
                     )
                 })}
             </List>
-        {/* </Drawer> */}
+            {/* </Drawer> */}
         </>
     )
 }

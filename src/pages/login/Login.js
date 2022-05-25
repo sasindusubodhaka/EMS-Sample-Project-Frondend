@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Avatar, Grid, Paper, makeStyles, TextField, Button, Typography, Link, FormControl } from '@material-ui/core'
+import React, { useState} from 'react'
+import { Avatar, Grid, Paper, makeStyles, TextField, Button, Typography, Link } from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -9,7 +9,7 @@ import * as Action from './store/action'
 import validator from 'validator';
 import * as _ from 'lodash'
 import { useDispatch } from 'react-redux'
-import axios from "axios";
+
 
 const useStyles = makeStyles({
   avatarStyle: {
@@ -43,7 +43,7 @@ const Login = () => {
 
   const [formValue, setFormValue] = useState({ ...initialFormValue })
   const [errors, setErrors] = useState({ ...initialError })
-  const [showPassword, setShowPassword] = useState(false)
+  // const [showPassword, setShowPassword] = useState(false)
 
   const dispatch = useDispatch();
 

@@ -27,8 +27,9 @@ export const ON_GET_USER_CREDENTIALS = 'ON_GET_USER_CREDENTIALS';
                     History.push('/dashboard')
                     break;
                 }
-                // default :{navigate('/login')}
+                default :{History.push('/login')}
             }
+
 
 
         }).catch((error) => {
