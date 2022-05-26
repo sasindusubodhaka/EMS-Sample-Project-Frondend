@@ -18,11 +18,12 @@ const useStyles = makeStyles({
         fontSize: '16px',
     },
     cardContent: {
-        width: '140px',
-        textAlign: 'center',
-        // color: '#fff',
-        // backgroundImage: `linear-gradient(to right, rgba(0, 224, 255, 1), rgba(0, 133, 255, 1))`,
-        fontSize: '18px',
+
+        // textAlign: 'center',
+        // textAlignLast:'center',   
+        padding:'30px 10px 10px 85px', 
+        backgroundColor: 'rgb(229, 229, 243)',
+        fontSize: '20px',
         fontWeight: 'bold',
         flexGrow: 1,
     },

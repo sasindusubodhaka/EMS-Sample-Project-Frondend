@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     textAlign:'center',
     fontWeight:'bold',
     alignContent:'center',
-    color:'black'
+    color:'white'
     
   }
 });
@@ -59,7 +59,7 @@ const RegUsersChart = () => {
   {
     return (
       <Card >
-        <CardHeader title={"Monthly Registered Users"} style={{ backgroundColor: 'rgba(0,0,205,0.5)', margin: '0', opacity: '0.9',textAlign: 'center' }} classes={{title: materializeUIClasses.headerTitle}}></CardHeader>
+        <CardHeader title={"Monthly Registered Users"} style={{ backgroundColor: '#000059', margin: '0', opacity: '0.9',textAlign: 'center' }} classes={{title: materializeUIClasses.headerTitle}}></CardHeader>
         <CardContent style={{height:'10cm'}}>         
             <Bar
               data={state}

@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     textAlign: 'center',
     fontWeight: 'bold',
     alignContent: 'center',
-    color: 'black',
+    color: 'white',
   },
   chart:{
     height:'100%',
@@ -66,7 +66,7 @@ const UserTypeChart = () => {
   {
     return (
       <Card>
-        <CardHeader title={"Registered User Types"} style={{ backgroundColor: 'rgba(0,0,205,0.5)', opacity: '0.9', textAlign: 'center' }} classes={{ title: materializeUIClasses.headerTitle }} ></CardHeader>
+        <CardHeader title={"Registered User Types"} style={{ backgroundColor: '#000059', opacity: '0.9', textAlign: 'center' }} classes={{ title: materializeUIClasses.headerTitle }} ></CardHeader>
         <CardContent style={{height:'10cm'}}>
             <Pie
               data={state}
