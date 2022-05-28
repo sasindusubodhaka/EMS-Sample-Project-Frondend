@@ -1,12 +1,14 @@
 import React from 'react'
 import { DataGrid } from '@material-ui/data-grid';
+import {DeleteForever} from '@material-ui/icons';
+import ViewUser from './ViewUser';
 import '../user.css'
 const columns = [
   { field: 'id', headerName: 'ID', width: 90 },
   {
     field: 'firstName',
     headerName: 'First name',
-    width: 250,  
+    width: 150,  
     renderCell:(params)=>{
       return(
         <div className='userListUser'> 
@@ -19,7 +21,13 @@ const columns = [
   {
     field: 'lastName',
     headerName: 'Last name',
-    width: 250,
+    width: 150,
+    editable: true,
+  },
+  {
+    field: 'department',
+    headerName: 'Department',
+    width: 150,
     editable: true,
   },
   {
@@ -43,7 +51,21 @@ const columns = [
     headerName: 'Role',   
     width: 100,
     editable: true,
-  }
+  },
+  {
+    field:'action',
+    headerName:'Action',
+    width:150,
+    renderCell:(params)=>{
+      return(
+        <>    
+        <ViewUser />
+        <button> <DeleteForever className='userListDelete'/></button>
+       
+        </>
+      )
+    }
+  },
 ];
 
 const rows = [
@@ -59,13 +81,14 @@ const rows = [
 ];
 const ViewUsers = () => {
   return (
-    <div style={{ height: 500, width: '100%'}}>
+    <div style={{ height: 600, width: '100%'}}>
       <DataGrid
         rows={rows}
         columns={columns}
-        pageSize={5}
-        checkboxSelection
+        pageSize={8}
+        // checkboxSelection
         disableSelectionOnClick
+          
       
       />
     </div>

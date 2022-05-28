@@ -1,0 +1,51 @@
+.newDepartment{
+    /* flex: 4; */
+    padding: 30px 0px 30px 100px;
+}
+.newDepartmentTitle{
+
+}
+.newDepartmentForm{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.newDepartmentItem{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-right:20px ;
+}
+
+.newDepartmentItem>label{
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(32, 32, 32);
+}
+
+.newDepartmentItem>input{
+    height: 20px;
+    padding: 10px;
+    border:1px solid;
+    border-radius: 5px;
+}
+
+.newUserSelect{
+    height: 40px;
+    border-radius:5px;
+}
+
+.addDeptButton{
+  
+    width: 200px;
+    border: none;
+    background-color:darkblue ;
+    color: white;
+    padding: 7px 10px;
+    border-radius: 10px;
+    margin-top: 30px;
+    cursor: pointer;
+    margin-left: 40px;
+}
