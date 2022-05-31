@@ -4,8 +4,9 @@ import { PermIdentity, Publish, CalendarToday, AccountBalance, MailOutline, Acco
 import "../user.css"
 Modal.setAppElement('#root')
 
-const ViewUser = () => {
+const ViewUser = ({userDetails}) => {
     const [modalIsopen, setmodalIsopen] = useState(false);
+    console.log("userDetails in model",userDetails)
     return (
         <>
             <button className="userListEdit" onClick={() => setmodalIsopen(true)} style={{ height: '40px', float: 'right' }}>

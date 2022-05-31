@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
-import doctorAddEditReducer from "./doctor.add.edit.recuder";
+import manageUsersReducer from "./manageUsersReducer";
 
 const reducer = combineReducers(
-  {doctorAddEdit: doctorAddEditReducer}
+  {manageUsers: manageUsersReducer}
 );
 
 export default reducer;

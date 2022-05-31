@@ -3,12 +3,17 @@ import * as _ from 'lodash'
 import validator from 'validator'
 import { useDispatch } from 'react-redux'
 import * as Actions from '../store/actions/UserActions'
+import bcrypt from 'bcryptjs'
 import './addUser.css'
+
+
+const salt = bcrypt.genSaltSync(10)
 
 let initialFormValue = {
     firstName: '',
     lastName: '',
     password: '',
+    hashedPassword:'',
     email: '',
     department: '',
     role: ''
@@ -23,7 +28,7 @@ let initError = {
 
 }
 const AddUser = () => {
-    const [formValues, serFormValues] = useState({ ...initialFormValue })
+    const [formValues, setFormValues] = useState({ ...initialFormValue })
     const [errors, setErrors] = useState({ ...initError })
 
     const dispatch = useDispatch()
@@ -31,7 +36,7 @@ const AddUser = () => {
     const onValueChange = (v) => {
         let value = v.target.value
         let name = v.target.name
-        serFormValues({ ...formValues, [name]: value })
+        setFormValues({ ...formValues, [name]: value })
 
     }
 
@@ -39,6 +44,8 @@ const AddUser = () => {
         e.preventDefault()
         const isValid = validation()
         if (isValid) {
+            // const hashedPassword = bcrypt.hashSync(formValues.password, '$2a$10$CwTycUXWue0Thq9StjUM0u')
+            // setFormValues({password:hashedPassword})
             console.log('formValues before submit', formValues)
             dispatch(Actions.saveUser(formValues))
         } else {
@@ -82,14 +89,14 @@ const AddUser = () => {
             localErrors.emailErrors.invalidEmailType = null
         }
 
-        //validating password
+        //validating password and hash
         const passwordLength = formValues.password.trim()
         if (passwordLength < 1 || passwordLength > 8) {
             let passwordlengthError = Object.assign({}, { passwordLenError: 'password is missing or too long' })
             localErrors.passwordErrors = passwordlengthError
             isValid = false
         }
-        else {
+        else {                     
             localErrors.passwordErrors.passwordLenError = null
         }
 
@@ -132,7 +139,7 @@ const AddUser = () => {
                 <div className='newUserItem'>
                     <label>Last Name</label>
                     <input type="text"
-                        placeholder='Enter the First Name'
+                        placeholder='Enter the Last Name'
                         name="lastName"
                         value={formValues.lastName}
                         onChange={onValueChange}
@@ -188,7 +195,7 @@ const AddUser = () => {
                     <select 
                         name="department"
                         className='newUserSelect'
-                        id="dept"
+                        id="department"
                         value={formValues.department}
                         onChange={onValueChange}
                     >

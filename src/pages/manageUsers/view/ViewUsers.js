@@ -3,20 +3,25 @@ import { DataGrid } from '@material-ui/data-grid';
 import {DeleteForever} from '@material-ui/icons';
 import ViewUser from './ViewUser';
 import '../user.css'
+import {useSelector} from 'react-redux'
+import withReducer from '../../../store/WithReducer'
+import reducer from '../store/reducer'
+// import { DummyUserData } from './DummyUserData';
+
 const columns = [
-  { field: 'id', headerName: 'ID', width: 90 },
+  { field: 'userId', headerName: 'ID', width: 90 },
   {
     field: 'firstName',
     headerName: 'First name',
     width: 150,  
-    renderCell:(params)=>{
-      return(
-        <div className='userListUser'> 
-          <img className='userListImg' src={params.row.avatar} alt=""/>
-          {params.row.firstName}
-        </div>
-      )
-    }
+    // renderCell:(params)=>{
+    //   return(
+    //     <div className='userListUser'> 
+    //       <img className='userListImg' src={params.row.avatar} alt=""/>
+    //       {params.row.firstName}
+    //     </div>
+    //   )
+    // }
   },
   {
     field: 'lastName',
@@ -42,9 +47,7 @@ const columns = [
     description: 'This column has a value getter and is not sortable.',
     sortable: false,
     width: 160,
-    // valueGetter: (params) =>
-    //   `${params.getValue(params.id, 'firstName') || ''} ${params.getValue(params.id, 'lastName') || ''
-    //   }`,
+
   },
   {
     field: 'role',
@@ -59,7 +62,7 @@ const columns = [
     renderCell:(params)=>{
       return(
         <>    
-        <ViewUser />
+        <ViewUser userDeatails={params} />
         <button> <DeleteForever className='userListDelete'/></button>
        
         </>
@@ -68,31 +71,23 @@ const columns = [
   },
 ];
 
-const rows = [
-  { id: 1, lastName: 'Snow', avatar:'/images/profile.jpg',firstName: 'Jon', email: 'Jon@gmail.com' ,createdOn:'2022.05.26',role:'cleark'},
-  { id: 2, lastName: 'Lannister',avatar:'/images/profile.jpg', firstName: 'Cersei', email: "Cersei@gmail.com" ,createdOn:'2022.05.26',role:'cleark'},
-  { id: 3, lastName: 'Lannister',avatar:'/images/profile.jpg', firstName: 'Jaime', email: 'Jaime@gmail.com',createdOn:'2022.05.26',role:'cleark' },
-  { id: 4, lastName: 'Stark',avatar:'/images/profile.jpg', firstName: 'Arya', email: "Arya@gmail.com" ,createdOn:'2022.05.26',role:'cleark'},
-  { id: 5, lastName: 'Targaryen',avatar:'/images/profile.jpg', firstName: 'Daenerys', email: 'Daenerys@gmail.com',createdOn:'2022.05.26',role:'cleark' },
-  { id: 6, lastName: 'Melisandre',avatar:'/images/profile.jpg', firstName: null, email: 'Melisandre@gmail.com',createdOn:'2022.05.26',role:'cleark' },
-  { id: 7, lastName: 'Clifford', avatar:'/images/profile.jpg',firstName: 'Ferrara', email: 'Ferrara@gmail.com',createdOn:'2022.05.26',role:'cleark' },
-  { id: 8, lastName: 'Frances', avatar:'/images/profile.jpg',firstName: 'Rossini', email: 'Rossini@gmail.com',createdOn:'2022.05.26',role:'cleark' },
-  { id: 9, lastName: 'Roxie',avatar:'/images/profile.jpg', firstName: 'Harvey', email: 'Harvey@gmail.com',createdOn:'2022.05.26',role:'cleark' },
-];
 const ViewUsers = () => {
+  const reducerData = useSelector(({users})=>users.manageUsers)
+  const userList = reducerData.userList;
+  console.log("user List in View User",userList)
   return (
     <div style={{ height: 600, width: '100%'}}>
       <DataGrid
-        rows={rows}
+        rows={userList}
         columns={columns}
         pageSize={8}
         // checkboxSelection
-        disableSelectionOnClick
-          
+        disableSelectionOnClick    
+        getRowId={(userList) => userList.userId}
       
       />
     </div>
   )
 }
 
-export default ViewUsers
+export default withReducer('users',reducer)(ViewUsers)

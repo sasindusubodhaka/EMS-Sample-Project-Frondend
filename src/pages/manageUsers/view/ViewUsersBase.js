@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Layout from '../../../components/layout/Layout'
 import Topbar from '../../../components/topbar/Topbar'
 import Sidebar from '../../../components/sidebar/Sidebar'
-import {adminMenuItems} from '../../../components/sidebar/MenuItems'
+import { adminMenuItems } from '../../../components/sidebar/MenuItems'
 import Footer from '../../../components/footer/Footer'
 import ViewUsers from './ViewUsers'
+import axios from 'axios'
+import * as Actions from '../store/actions/UserActions'
+import { useDispatch } from 'react-redux'
 
 const ViewUsersBase = () => {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(Actions.getUserList())
+        
+    }, [])
+
     return (
         <>
             <Layout

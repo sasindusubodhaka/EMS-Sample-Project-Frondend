@@ -5,6 +5,10 @@ class UserService {
   saveUser(user) {
     return axios.post(Constants.API_BASE_URL + '/addUser', user)
   }
+  getUserList() {
+    console.log("getUserList in services")
+    return axios.get(Constants.API_BASE_URL + '/getUserList')
+  }
 
   // getDoctors() {
   //   return axios.get(Constants.API_BASE_URL + '/getDoctors')
@@ -17,7 +21,7 @@ class UserService {
 
 
 
- 
+
 }
 
 export default new UserService()
