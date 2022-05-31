@@ -15,7 +15,7 @@ let initialFormValue = {
     password: '',
     hashedPassword:'',
     email: '',
-    department: '',
+    department: 'sales',
     role: ''
 }
 
@@ -43,11 +43,9 @@ const AddUser = () => {
     const onSubmit = (e) => {
         e.preventDefault()
         const isValid = validation()
-        if (isValid) {
-            // const hashedPassword = bcrypt.hashSync(formValues.password, '$2a$10$CwTycUXWue0Thq9StjUM0u')
-            // setFormValues({password:hashedPassword})
+        if (isValid) {      
             console.log('formValues before submit', formValues)
-            dispatch(Actions.saveUser(formValues))
+            // dispatch(Actions.saveUser(formValues))
         } else {
             console.log('fail')
         }
@@ -194,8 +192,7 @@ const AddUser = () => {
                     <label>Department</label>
                     <select 
                         name="department"
-                        className='newUserSelect'
-                        id="department"
+                        className='newUserSelect'                    
                         value={formValues.department}
                         onChange={onValueChange}
                     >

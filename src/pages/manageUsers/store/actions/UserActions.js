@@ -7,7 +7,7 @@ import { toast } from 'react-toastify'
 
 export const ON_ADD_NEW_USER = '[ON_ADD_NEW_USER] ON_ADD_NEW_USER'
 export const ON_GET_USER_LIST = '[ON_GET_USER_LIST] ON_GET_USER_LIST'
-
+export const ON_UPDATE_USER ='[ON_UPDATE_USER] ON_UPDATE_USER'
 
 
 export function saveUser(user) {
@@ -49,6 +49,30 @@ export function getUserList() {
       })
   }
 }
+
+export function updateUser(updatedUser) {
+  const request = UserService.updateUser(updatedUser)
+
+  return (dispatch, getState) => {
+    return request
+      .then((response) => {
+        toast.success('Successfully Updated', {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 2000,
+        })   
+        dispatch({
+          type: ON_UPDATE_USER,
+          payload: response.data,
+        })
+      })
+      .catch((error) => {
+        toast.error('update failed , Please try agin', { position: toast.POSITION.TOP_CENTER, autoClose: 2000 })
+        console.log(error)
+      })
+  }
+}
+
+
 
 
 
