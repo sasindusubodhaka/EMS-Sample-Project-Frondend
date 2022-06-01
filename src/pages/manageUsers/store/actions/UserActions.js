@@ -1,9 +1,9 @@
 import history from '../../../../@history'
 import UserService from './UserService'
 import { toast } from 'react-toastify'
-// import 'react-toastify/dist/ReactToastify.css'
+import 'react-toastify/dist/ReactToastify.css'
 
-// toast.configure()
+toast.configure()
 
 export const ON_ADD_NEW_USER = '[ON_ADD_NEW_USER] ON_ADD_NEW_USER'
 export const ON_GET_USER_LIST = '[ON_GET_USER_LIST] ON_GET_USER_LIST'
@@ -56,10 +56,13 @@ export function updateUser(updatedUser) {
   return (dispatch, getState) => {
     return request
       .then((response) => {
-        toast.success('Successfully Updated', {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 2000,
-        })   
+        if(response.data==1){
+          toast.success('Successfully Updated', {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 2000,
+          })   
+          history.push('viewusers')
+        }
         dispatch({
           type: ON_UPDATE_USER,
           payload: response.data,

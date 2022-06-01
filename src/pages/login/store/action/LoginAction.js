@@ -24,7 +24,7 @@ export const ON_GET_USER_CREDENTIALS = 'ON_GET_USER_CREDENTIALS';
           
             switch (userRole) {
                 case 'admin': {
-                    History.push('/dashboard')
+                    History.push('/admin/dashboard')
                     break;
                 }
                 default :{History.push('/login')}

@@ -14,8 +14,11 @@ const ViewAndEditUser = ({ userDetails }) => {
     const [modalIsopen, setmodalIsopen] = useState(false);
 
     let initFormValues = {
+        userId:`${userDetails.userId}`,
         firstName: `${userDetails.firstName}`,
         lastName: `${userDetails.lastName}`,
+        password:`${userDetails.password}`,
+        createdOn :`${userDetails.createdOn}`,
         email: `${userDetails.email}`,
         department: `${userDetails.department}`,
         role: `${userDetails.role}`
