@@ -24,6 +24,7 @@ export function getRegisteredUsers() {
     const request = AdminDashboardService.getRegisteredUsers();
     return (dispatch, getState) => {
         request.then((response) => {
+            console.log(response.data)
             dispatch({
                 type: ON_GET_REGISTERED_USERS,
                 payload: response.data

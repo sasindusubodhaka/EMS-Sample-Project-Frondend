@@ -14,8 +14,8 @@ const DashboardBase = () => {
 
     useEffect(() => {
         dispatch(Actions.getDataCardDetails());
-        // dispatch(Actions.getRegisteredUsers());
-        // dispatch(Actions.getDeptWiseUserCount());
+        dispatch(Actions.getRegisteredUsers());
+        dispatch(Actions.getDeptWiseUserCount());
     }, [])
     
     return (

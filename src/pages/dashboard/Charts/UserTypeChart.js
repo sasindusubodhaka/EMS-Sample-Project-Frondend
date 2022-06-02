@@ -2,9 +2,9 @@
 import React from 'react';
 import 'chart.js/auto';
 import { Pie, Doughnut } from 'react-chartjs-2';
-// import { useSelector } from 'react-redux';
-// import withReducer from '../../../../../../store/withReducer'
-// import reducer from '../store/reducer/index'
+import { useSelector } from 'react-redux';
+import withReducer from '../../../store/WithReducer'
+import reducer from '../store/reducer'
 import { makeStyles } from '@material-ui/styles'
 import { CardItems } from '../CardItems';
 import {
@@ -33,16 +33,16 @@ const useStyles = makeStyles({
 });
 
 const UserTypeChart = () => {
-  // const reducerData = useSelector(({ userType }) => userType.adminDashboard);
-  // const adminDataItems = reducerData.userCounts;
+  const reducerData = useSelector(({ userType }) => userType.adminDashboard);
+  const adminDataItems = reducerData.deptWiseUserCount;
   const materializeUIClasses = useStyles();
-  const adminDataItems = CardItems;
+  console.log()
   let usersData = [];
   adminDataItems && adminDataItems.map((users) => {
     usersData.push(users.value);
   })
   const state = {
-    labels: ['Departments', 'Registered Users', 'User Roles'],
+    labels: ['IT', 'Sales', 'HR'],
     datasets: [
       {
         // label: 'Rainfall',
@@ -66,7 +66,7 @@ const UserTypeChart = () => {
   {
     return (
       <Card>
-        <CardHeader title={"Registered User Types"} style={{ backgroundColor: '#000059', opacity: '0.9', textAlign: 'center' }} classes={{ title: materializeUIClasses.headerTitle }} ></CardHeader>
+        <CardHeader title={"Department Wise Users"} style={{ backgroundColor: '#000059', opacity: '0.9', textAlign: 'center' }} classes={{ title: materializeUIClasses.headerTitle }} ></CardHeader>
         <CardContent style={{height:'10cm'}}>
             <Pie
               data={state}
@@ -81,5 +81,4 @@ const UserTypeChart = () => {
     );
   }
 }
-// export default withReducer('userType', reducer)(UserTypeChart);
-export default UserTypeChart
+export default withReducer('userType', reducer)(UserTypeChart);

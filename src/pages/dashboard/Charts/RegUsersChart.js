@@ -1,11 +1,11 @@
 import React from 'react';
 import 'chart.js/auto';
 import { Bar} from 'react-chartjs-2';
-// import { useSelector } from 'react-redux';
-// import withReducer from '../../../../../../store/withReducer'
-// import reducer from '../store/reducer/index'
+import { useSelector } from 'react-redux';
+import withReducer from '../../../store/WithReducer'
+import reducer from '../store/reducer'
 import { makeStyles } from '@material-ui/styles'
-import { CardItems } from '../CardItems';
+// import { CardItems } from '../CardItems';
 import {
   Card,
   CardContent,
@@ -27,14 +27,15 @@ const useStyles = makeStyles({
 
 
 const RegUsersChart = () => {
-  // const reducerData = useSelector(({ regUser }) => regUser.adminDashboard);
-  // const monthlyRegisteredUsers = reducerData.registeredUsers;
+  const reducerData = useSelector(({ regUser }) => regUser.adminDashboard);
+  const monthlyRegisteredUsers = reducerData.registeredUsers;
+  console.log("monthlyRegisteredUsers :",monthlyRegisteredUsers)
   const materializeUIClasses = useStyles();
   const state = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
     datasets: [
       {
-        label: '2021 Regstered Users',
+        label: '2022 Regstered Users',
         backgroundColor: [
           'rgba(75,192,192,0.5)',
           'rgba(0,0,205,0.5)',
@@ -52,7 +53,7 @@ const RegUsersChart = () => {
         ],
         borderColor: 'rgba(0,0,0,1)',
         borderWidth: 0.2,
-        data: CardItems
+        data: monthlyRegisteredUsers
       }
     ]
   }
@@ -85,5 +86,4 @@ const RegUsersChart = () => {
     );
   }
 }
-// export default withReducer('regUser', reducer)(RegUsersChart);
-export default RegUsersChart
+export default withReducer('regUser', reducer)(RegUsersChart);

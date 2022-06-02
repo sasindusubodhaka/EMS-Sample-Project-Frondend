@@ -1,14 +1,14 @@
 export const CardItems =[
     {
-        name:"Departments",
+        name:"IT",
         value:4
     },
     {
-        name:"Registered Users",
+        name:"Sales",
         value:10
     },
     {
-        name:"User Roles",
+        name:"HR",
         value:5
     },
 

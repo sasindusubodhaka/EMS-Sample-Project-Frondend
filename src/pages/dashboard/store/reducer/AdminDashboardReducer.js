@@ -23,7 +23,7 @@ const AdminDashboardReducer = function (state = initialState, action) {
             }
 
         }
-        case ON_GET_REGISTERED_USERS: {            
+        case ON_GET_REGISTERED_USERS: {                  
             return {
                 ...state,
                 registeredUsers: [...action.payload]
