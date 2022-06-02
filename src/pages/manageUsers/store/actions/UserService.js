@@ -12,9 +12,9 @@ class UserService {
     return axios.post(Constants.API_BASE_URL + '/updateUser',updatedUser)
   }
 
-  // getDoctors() {
-  //   return axios.get(Constants.API_BASE_URL + '/getDoctors')
-  // }
+  deleteUser() {
+    return axios.get(Constants.API_BASE_URL + '/deleteUser')
+  }
 
   // saveOrUpdateDoctor(doctor) {
   //   return axios.post(Constants.API_BASE_URL, doctor)

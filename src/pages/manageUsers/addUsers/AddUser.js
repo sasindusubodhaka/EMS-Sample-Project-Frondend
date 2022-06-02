@@ -3,11 +3,8 @@ import * as _ from 'lodash'
 import validator from 'validator'
 import { useDispatch } from 'react-redux'
 import * as Actions from '../store/actions/UserActions'
-import bcrypt from 'bcryptjs'
 import './addUser.css'
 
-
-const salt = bcrypt.genSaltSync(10)
 
 let initialFormValue = {
     firstName: '',

@@ -7,7 +7,8 @@ toast.configure()
 
 export const ON_ADD_NEW_USER = '[ON_ADD_NEW_USER] ON_ADD_NEW_USER'
 export const ON_GET_USER_LIST = '[ON_GET_USER_LIST] ON_GET_USER_LIST'
-export const ON_UPDATE_USER ='[ON_UPDATE_USER] ON_UPDATE_USER'
+export const ON_UPDATE_USER = '[ON_UPDATE_USER] ON_UPDATE_USER'
+export const ON_DELETE_USER = '[ON_DELETE_USER] ON_DELETE_USER'
 
 
 export function saveUser(user) {
@@ -35,9 +36,9 @@ export function saveUser(user) {
 
 export function getUserList() {
   const request = UserService.getUserList()
-  console.log("request in action :",request)
+  console.log("request in action :", request)
   return (dispatch, getState) => {
-    request.then((response) => { 
+    request.then((response) => {
       dispatch({
         type: ON_GET_USER_LIST,
         payload: response.data,
@@ -56,11 +57,11 @@ export function updateUser(updatedUser) {
   return (dispatch, getState) => {
     return request
       .then((response) => {
-        if(response.data==1){
+        if (response.data == 1) {
           toast.success('Successfully Updated', {
             position: toast.POSITION.TOP_CENTER,
             autoClose: 2000,
-          })   
+          })
           history.push('viewusers')
         }
         dispatch({
@@ -75,6 +76,30 @@ export function updateUser(updatedUser) {
   }
 }
 
+export function deleteUser(userId) {
+  const request = UserService.deleteUser(userId)
+  console.log("user id in action: ",userId)
+  return (dispatch, getState) => {
+    return request
+      .then((response) => {
+        if (response.data == 1) {
+          toast.success('Successfull Deleted', {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 2000,
+          })
+          history.push('viewusers')
+        }
+        dispatch({
+          type: ON_DELETE_USER,
+          payload: response.data,
+        })
+      })
+      .catch((error) => {
+        toast.error('delete failed , Please try agin', { position: toast.POSITION.TOP_CENTER, autoClose: 2000 })
+        console.log(error)
+      })
+  }
+}
 
 
 

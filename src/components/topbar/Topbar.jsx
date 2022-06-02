@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 const Topbar = () => {
     const navigate = useNavigate();
     const exit=()=>{
-        navigate('/login')
+        navigate('/')
     }
     return (
         <div className='topbar'>
@@ -27,7 +27,9 @@ const Topbar = () => {
                     <div className='topbarIconContainer'>
                         <Settings />
                     </div>
-                    <img src="/images/profile.jpg" className='topAvator' alt="profile" />
+                    <div className='avaratContainer' style={{paddingRight:'25px'}}>
+                    <img src="/images/profile2.jpg" className='topAvator' alt="profile" />
+                    </div>
                     <div className='topbarIconContainer'>
                         <ExitToApp onClick={exit}/>
                     </div>

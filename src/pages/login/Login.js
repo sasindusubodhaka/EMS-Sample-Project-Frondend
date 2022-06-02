@@ -1,8 +1,6 @@
-import React, { useState} from 'react'
+import React, { useState } from 'react'
 import { Avatar, Grid, Paper, makeStyles, TextField, Button, Typography, Link } from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import WithReducer from '../../store/WithReducer';
 import reducer from './store/reducer';
 import * as Action from './store/action'
@@ -16,13 +14,29 @@ const useStyles = makeStyles({
     backgroundColor: '#2d919b'
   },
   paperStyle: {
+    background: 'none',
     padding: '20px ',
     height: '50vh',
-    width: 300,
+    width: 400,
     margin: " 100px auto"
   },
   btnStyle: {
-    margin: '8px 0'
+    margin: '8px 0',
+    backgroundColor:'#2d919b'
+
+  },
+
+  input: {
+    height: 35,
+    color: 'white'
+
+  },
+  label: {
+    color: 'white',
+    
+  },
+  textField: {
+    height: 120
   }
 })
 
@@ -105,17 +119,21 @@ const Login = () => {
       <Paper elevation={10} className={classes.paperStyle}>
         <Grid align='center' >
           <Avatar className={classes.avatarStyle}><LockOutlinedIcon /></Avatar>
-          <h2>Sign in</h2>
+          <h2 style={{ color: 'white' }}>Sign in</h2>
         </Grid>
 
         {/* <FormControl> */}
         <TextField
+          inputProps={{ className: classes.input }}
+          InputLabelProps={{ className: classes.label }}
           value={formValue.userName}
           name="userName"
           label="Username"
           placeholder='Enter username'
           fullWidth={true}
           onChange={onMyChange}
+          className={classes.textField}
+
         />
         <Grid>
           {Object.keys(errors.userNameErrors).map((key, index) => {
@@ -128,6 +146,8 @@ const Login = () => {
         </Grid>
 
         <TextField
+          inputProps={{ className: classes.input }}
+          InputLabelProps={{ className: classes.label }}
           value={formValue.password}
           label="Password"
           placeholder='Enter password'
@@ -135,6 +155,7 @@ const Login = () => {
           fullWidth={true}
           name="password"
           onChange={onMyChange}
+          className={classes.textField}
         />
         <Grid>
           {Object.keys(errors.passwordErors).map((key, index) => {
@@ -144,31 +165,14 @@ const Login = () => {
               </div>
             )
           })}
-        </Grid>
-        <FormControlLabel
-          control={
-            <Checkbox
-              // checked={state.checkedB}
-              // onChange={handleChange}
-              name="checkedB"
-              color="primary"
-            />
-          }
-          label="Remember me"
-        />
-        <Button type='submit' color='primary' className={classes.btnStyle} variant='contained' fullWidth onClick={onSubmit}>Sign in </Button>
+        </Grid>     
+        <Button type='submit' className={classes.btnStyle} variant='contained' fullWidth onClick={onSubmit}>Sign in </Button>
 
-        <Typography>
-          <Link href="#" >forgot password</Link>
-        </Typography>
-        <Typography>
-          Do you have account?
-          <Link href="#" >Sign up </Link>
-        </Typography>
+
+
       </Paper>
 
     </Grid>
   )
 }
-// export default Login;
 export default WithReducer('log', reducer)(Login)

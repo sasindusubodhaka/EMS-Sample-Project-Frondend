@@ -4,9 +4,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux'
 import store from '../store/index';
 import React from 'react';
-import Login from '../pages/login/Login'
+import Login from '../pages/login/LoginPage'
 import History from '../@history';
-import Home from '../pages/home/Home';
 import DashboardBase from '../pages/dashboard/DashboardBase';
 import AddUserBase from '../pages/manageUsers/addUsers/AddUserBase';
 import ViewUsersBase from '../pages/manageUsers/view/ViewUsersBase';
@@ -28,8 +27,7 @@ const App=()=> {
         <Router history={History} forceRefresh={true}>
         <React.Suspense fallback={loading}>
           <Routes>
-            <Route path="/" element={<Home/>} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Login/>} />  
             <Route path="/admin/dashboard" element={<DashboardBase/>} />
             <Route path="/admin/viewusers" element={<ViewUsersBase/>} />
             <Route path="/admin/registerusers" element={<AddUserBase/>} />

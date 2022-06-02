@@ -18,9 +18,7 @@ const useStyles = makeStyles({
         fontSize: '16px',
     },
     cardContent: {
-
-        // textAlign: 'center',
-        // textAlignLast:'center',   
+      
         padding:'30px 10px 10px 85px', 
         backgroundColor: 'rgb(229, 229, 243)',
         fontSize: '20px',
