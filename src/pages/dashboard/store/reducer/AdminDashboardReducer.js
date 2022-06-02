@@ -1,32 +1,25 @@
 import {
-    ON_GET_USER_COUNTS,
-    ON_GET_ONLINE_USERS,
-    ON_GET_REGISTERED_USERS
+    ON_GET_DATA_CARD_DETAILS,
+    ON_GET_REGISTERED_USERS,
+    ON_GET_DEPTWISE_USER_COUNT
 
 } from "../action/AdminDashboardAction";
 import * as _ from 'lodash'
 const initialState = {
 
-    userCounts: [],
-    onlineUsers:[],
-    registeredUsers:[]
+    dataCardDetails: [],
+    registeredUsers:[],
+    deptWiseUserCount:[]
 
 
 };
 const AdminDashboardReducer = function (state = initialState, action) {    
 
     switch (action.type) {
-        case ON_GET_USER_COUNTS: {
+        case ON_GET_DATA_CARD_DETAILS: {
             return {
                 ...state,
-                userCounts: [...action.payload]
-            }
-
-        }
-        case ON_GET_ONLINE_USERS: {            
-            return {
-                ...state,
-                onlineUsers: [...action.payload]
+                dataCardDetails: [...action.payload]
             }
 
         }
@@ -34,6 +27,13 @@ const AdminDashboardReducer = function (state = initialState, action) {
             return {
                 ...state,
                 registeredUsers: [...action.payload]
+            }
+
+        }
+        case ON_GET_DEPTWISE_USER_COUNT: {            
+            return {
+                ...state,
+                deptWiseUserCount: [...action.payload]
             }
 
         }

@@ -4,15 +4,6 @@ import { useSelector } from 'react-redux'
 import withReducer from '../../../store/WithReducer'
 import reducer from '../store/reducer'
 
-
-
-// const rows = [
-//   { id: 1, department: 'Sales', description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"},
-//   { id: 2, department: 'IT', description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"},
-//   { id: 3, department: 'HR', description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"},
- 
-// ];
-
 const ViewDept = () => {
   const reducerData = useSelector(({ depts }) => depts.manageDepts)
   const deptList = reducerData.deptList;

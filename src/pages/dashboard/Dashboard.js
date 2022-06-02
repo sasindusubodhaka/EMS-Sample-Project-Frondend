@@ -4,6 +4,9 @@ import DataCard from '../../components/dataCard/DataCard'
 import UserTypeChart from './Charts/UserTypeChart'
 import RegUsersChart from './Charts/RegUsersChart'
 import { CardItems } from './CardItems'
+import { useSelector } from 'react-redux'
+import withReducer from '../../store/WithReducer'
+import reducer from './store/reducer'
 
 const useStyles = makeStyles({
   dataCard: {
@@ -15,6 +18,8 @@ const useStyles = makeStyles({
 })
 
 const Dashboard = () => {
+  const reducerData = useSelector(({ stat }) => stat.adminDashboard)
+  const CardDetails = reducerData.dataCardDetails;
 
   // const adminDataItems = CardItems
   const classes = useStyles();
@@ -22,7 +27,7 @@ const Dashboard = () => {
     <>
       <Grid container spacing={3}>
         <Grid className={classes.dataCard} item sm={12}>
-          <DataCard cardItems={CardItems} />
+          <DataCard cardItems={CardDetails} />
         </Grid>
         <Grid item sm={12}>
           <Grid container  spacing={1}>
@@ -38,4 +43,5 @@ const Dashboard = () => {
     </>
   )
 }
-export default Dashboard
+
+export default withReducer('stat', reducer)(Dashboard)

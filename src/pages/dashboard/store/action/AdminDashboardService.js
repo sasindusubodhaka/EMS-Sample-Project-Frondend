@@ -1,15 +1,15 @@
 import axios from 'axios'
-import Constants from '../../../../../../../utils/Constants'
+import Constants from '../../../../utils/Constants'
 
 class AdminDashboardService {
-  getUserCounts() {
-    return axios.get(Constants.API_BASE_URL + '/getUserCounts/')
-  }
-  getOnlineUsers() {
-    return axios.get(Constants.API_BASE_URL + '/getOnlineUsers/')
+  getDataCardDetails() {
+    return axios.get(Constants.API_BASE_URL + '/getDataCardDetails')
   }
   getRegisteredUsers(){
-    return axios.get(Constants.API_BASE_URL + '/getRegisteredUsers/')
+    return axios.get(Constants.API_BASE_URL + '/getRegisteredUsers')
+  }
+  getDeptWiseUserCount() {
+    return axios.get(Constants.API_BASE_URL + '/getDeptWiseUserCount')
   }
 }
 
