@@ -4,7 +4,7 @@ import { PermIdentity, Publish, CalendarToday, AccountBalance, MailOutline, Acco
 import "../user.css"
 import * as _ from 'lodash'
 import validator from 'validator'
-import {useDispatch} from 'react-redux'
+import { useDispatch } from 'react-redux'
 import * as Actions from '../store/actions/UserActions'
 Modal.setAppElement('#root')
 
@@ -14,11 +14,11 @@ const ViewAndEditUser = ({ userDetails }) => {
     const [modalIsopen, setmodalIsopen] = useState(false);
 
     let initFormValues = {
-        userId:`${userDetails.userId}`,
+        userId: `${userDetails.userId}`,
         firstName: `${userDetails.firstName}`,
         lastName: `${userDetails.lastName}`,
-        password:`${userDetails.password}`,
-        createdOn :`${userDetails.createdOn}`,
+        password: `${userDetails.password}`,
+        createdOn: `${userDetails.createdOn}`,
         email: `${userDetails.email}`,
         department: `${userDetails.department}`,
         role: `${userDetails.role}`
