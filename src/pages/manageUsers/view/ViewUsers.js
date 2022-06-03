@@ -18,20 +18,20 @@ const ViewUsers = () => {
 
   const dispatch = useDispatch()
 
-  const DeleteUser = ({ closeToast,userId,firstName }) => {
-
+  const DeleteUser = ({ closeToast,deleteObject}) => {
     return (
       <div >
-        <h4>{firstName} will no longer exist in the system <br />
+        <h4>{deleteObject.userName} will no longer exist in the system <br />
           Are you sure want to perform the task ?</h4>
         <button onClick={closeToast} style={{ float: 'left', backgroundColor: '#3f51b5', color: 'white' }}>No</button>
-        <button onClick={() => dispatch(Actions.deleteUser(userId))} style={{ float: 'right', backgroundColor: '#FF0000', color: 'white' }}>Yes</button>
+        <button onClick={() => dispatch(Actions.deleteUser(deleteObject.userId))} style={{ float: 'right', backgroundColor: '#FF0000', color: 'white' }}>Yes</button>
       </div>
     )
   }
 
   const onDelete = (userId,firstName) => {
-    toast.error(<DeleteUser userDetails={userId,firstName}/>, { position: toast.POSITION.TOP_CENTER, autoClose: false })
+    let deleteObject ={userId:userId,userName:firstName}
+    toast.error(<DeleteUser deleteObject={deleteObject}/>, { position: toast.POSITION.TOP_CENTER, autoClose: false })
   }
 
   const columns = [

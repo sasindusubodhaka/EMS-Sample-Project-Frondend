@@ -5,20 +5,18 @@ class UserService {
   saveUser(user) {
     return axios.post(Constants.API_BASE_URL + '/addUser', user)
   }
-  getUserList() { 
+  getUserList() {
     return axios.get(Constants.API_BASE_URL + '/getUserList')
   }
-  updateUser(updatedUser){
-    return axios.post(Constants.API_BASE_URL + '/updateUser',updatedUser)
+  updateUser(updatedUser) {
+    return axios.post(Constants.API_BASE_URL + '/updateUser', updatedUser)
   }
 
-  deleteUser() {
-    return axios.get(Constants.API_BASE_URL + '/deleteUser')
+  deleteUser(userId) {
+    return axios.delete(Constants.API_BASE_URL + '/deleteUser/' + userId)
   }
 
-  // saveOrUpdateDoctor(doctor) {
-  //   return axios.post(Constants.API_BASE_URL, doctor)
-  // }
+ 
 
 
 

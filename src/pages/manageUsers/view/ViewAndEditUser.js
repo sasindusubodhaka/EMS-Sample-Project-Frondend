@@ -142,7 +142,7 @@ const ViewAndEditUser = ({ userDetails }) => {
                     <div className='userContainer'>
                         <div className='userShow'>
                             <div className='userShowTop'>
-                                <img src="/images/profile.jpg" alt="" className='userShowImg' />
+                                <img src="/images/profile3.jpg" alt="" className='userShowImg' />
                                 <div className='userShowTopTitle' >
                                     <span className='userShowUserName'>{userDetails.firstName + " " + userDetails.lastName}</span>
                                     <span className='userShowUserTitle'>{userDetails.role}</span>
@@ -267,7 +267,7 @@ const ViewAndEditUser = ({ userDetails }) => {
                                 </div>
                                 <div className='userUpdateRight'>
                                     <div className='userUpdateUpload'>
-                                        <img src='/images/profile.jpg' className='userUpdateImg' alt="profile" />
+                                        <img src='/images/profile3.jpg' className='userUpdateImg' alt="profile" />
                                         <label htmlFor='file'><Publish className='userUpdateIcon' /></label>
                                         <input type="file" id="file" style={{ display: 'none' }} />
                                     </div>

@@ -78,12 +78,11 @@ export function updateUser(updatedUser) {
 
 export function deleteUser(userId) {
   const request = UserService.deleteUser(userId)
-  console.log("user id in action: ",userId)
   return (dispatch, getState) => {
     return request
       .then((response) => {
-        if (response.data == 1) {
-          toast.success('Successfull Deleted', {
+        if (response.data == "Successfully deleted user") {
+          toast.success('Successfully Deleted', {
             position: toast.POSITION.TOP_CENTER,
             autoClose: 2000,
           })
