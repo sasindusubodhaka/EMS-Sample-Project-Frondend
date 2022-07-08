@@ -9,6 +9,7 @@ export const ON_ADD_NEW_USER = '[ON_ADD_NEW_USER] ON_ADD_NEW_USER'
 export const ON_GET_USER_LIST = '[ON_GET_USER_LIST] ON_GET_USER_LIST'
 export const ON_UPDATE_USER = '[ON_UPDATE_USER] ON_UPDATE_USER'
 export const ON_DELETE_USER = '[ON_DELETE_USER] ON_DELETE_USER'
+export const ON_GET_DEPARTMENT_LIST = '[ON_GET_DEPARTMENT_LIST] ON_GET_DEPARTMENT_LIST'
 
 
 export function saveUser(user) {
@@ -100,6 +101,21 @@ export function deleteUser(userId) {
   }
 }
 
+export function getdeptList() {
+  const request = UserService.getdeptList()
+  return (dispatch, getState) => {
+    request.then((response) => {   
+      dispatch({
+        type: ON_GET_DEPARTMENT_LIST,
+        payload: response.data,
+      })
+    })
+      .catch((error) => {
+      
+        console.log('get dept list error in user action', error)
+      })
+  }
+}
 
 
 

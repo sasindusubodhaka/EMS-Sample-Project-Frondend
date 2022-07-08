@@ -1,17 +1,26 @@
 import {
-  ON_GET_USER_LIST
+  ON_GET_USER_LIST,
+  ON_GET_DEPARTMENT_LIST
 } from '../actions/UserActions'
 
 const initialState = {
-  userList: []
+  userList: [],
+  deptList: []
 }
 
 const manageUsersReducer = function (state = initialState, action) {
   switch (action.type) {
-    case ON_GET_USER_LIST: {  
+    case ON_GET_USER_LIST: {
       return {
         ...state,
         userList: [...action.payload],
+      }
+    }
+    case ON_GET_DEPARTMENT_LIST: {
+      console.log("hai")
+      return {
+        ...state,
+        deptList: [...action.payload],
       }
     }
     default: {

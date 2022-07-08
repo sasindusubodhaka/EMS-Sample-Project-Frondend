@@ -16,7 +16,11 @@ class UserService {
     return axios.delete(Constants.API_BASE_URL + '/deleteUser/' + userId)
   }
 
- 
+  getdeptList() {
+    console.log("prr")
+    return axios.get(Constants.API_BASE_URL + '/getdeptList/')
+  }
+
 
 
 

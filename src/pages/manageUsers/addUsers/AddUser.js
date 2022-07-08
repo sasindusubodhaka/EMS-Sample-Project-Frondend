@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
 import * as _ from 'lodash'
 import validator from 'validator'
-import { useDispatch } from 'react-redux'
 import * as Actions from '../store/actions/UserActions'
 import './addUser.css'
+import { useSelector, useDispatch } from 'react-redux'
+import withReducer from '../../../store/WithReducer'
+import reducer from '../store/reducer'
 
 
 let initialFormValue = {
     firstName: '',
     lastName: '',
     password: '',
-    hashedPassword:'',
+    hashedPassword: '',
     email: '',
     department: 'sales',
     role: ''
@@ -25,8 +27,12 @@ let initError = {
 
 }
 const AddUser = () => {
+    const reducerData = useSelector(({ dept }) => dept.manageUsers)
+    const deptList = reducerData.deptList;
+    console.log("deptList in form : ",deptList && deptList);
     const [formValues, setFormValues] = useState({ ...initialFormValue })
     const [errors, setErrors] = useState({ ...initError })
+
 
     const dispatch = useDispatch()
 
@@ -40,9 +46,9 @@ const AddUser = () => {
     const onSubmit = (e) => {
         e.preventDefault()
         const isValid = validation()
-        if (isValid) {      
+        if (isValid) {
             console.log('formValues before submit', formValues)
-            dispatch(Actions.saveUser(formValues))
+            // dispatch(Actions.saveUser(formValues))
         } else {
             console.log('fail')
         }
@@ -91,7 +97,7 @@ const AddUser = () => {
             localErrors.passwordErrors = passwordlengthError
             isValid = false
         }
-        else {                     
+        else {
             localErrors.passwordErrors.passwordLenError = null
         }
 
@@ -187,15 +193,17 @@ const AddUser = () => {
 
                 <div className='newUserItem'>
                     <label>Department</label>
-                    <select 
+                    <select
                         name="department"
-                        className='newUserSelect'                    
+                        className='newUserSelect'
                         value={formValues.department}
                         onChange={onValueChange}
-                    >
-                        <option value="sales">Sales</option>
-                        <option value="hr">HR</option>
-                        <option value="it">IT</option>
+                    > 
+                    {
+                        deptList.map((dept)=>{
+                            <option value={dept.value}>dept</option> 
+                        })
+                    }                    
                     </select>
                 </div>
 
@@ -233,4 +241,4 @@ const AddUser = () => {
     )
 }
 
-export default AddUser
+export default withReducer('dept', reducer)(AddUser)
