@@ -34,8 +34,9 @@ export function saveDepartment(dept) {
 export function getdepartmentList() {
   const request = deptService.getdepartmentList()
   console.log("request in action :",request)
-  return (dispatch, getState) => {
+  return (dispatch, getState) => {    
     request.then((response) => { 
+      console.log("responce data :",response.data)
       dispatch({
         type: ON_GET_DEPT_LIST,
         payload: response.data,

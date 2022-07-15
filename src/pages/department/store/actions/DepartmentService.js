@@ -6,7 +6,7 @@ class DepartmentService{
     return axios.post(Constants.API_BASE_URL + '/addDepartment', dept)
   }
   getdepartmentList() { 
-    return axios.get(Constants.API_BASE_URL + '/getdeptList')
+    return axios.get(Constants.API_BASE_URL + '/getDeptList')
   }
   // updateUser(updatedUser){
   //   return axios.post(Constants.API_BASE_URL + '/updateUser',updatedUser)

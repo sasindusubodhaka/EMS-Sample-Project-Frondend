@@ -16,8 +16,8 @@ const manageUsersReducer = function (state = initialState, action) {
         userList: [...action.payload],
       }
     }
-    case ON_GET_DEPARTMENT_LIST: {
-      console.log("hai")
+    case ON_GET_DEPARTMENT_LIST: {   
+      console.log("dept list in userReducer : ",action.payload); 
       return {
         ...state,
         deptList: [...action.payload],

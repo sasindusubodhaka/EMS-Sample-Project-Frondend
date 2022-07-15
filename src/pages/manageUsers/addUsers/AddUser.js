@@ -29,7 +29,7 @@ let initError = {
 const AddUser = () => {
     const reducerData = useSelector(({ dept }) => dept.manageUsers)
     const deptList = reducerData.deptList;
-    console.log("deptList in form : ",deptList && deptList);
+    console.log("deptList in form : ",deptList.length);
     const [formValues, setFormValues] = useState({ ...initialFormValue })
     const [errors, setErrors] = useState({ ...initError })
 

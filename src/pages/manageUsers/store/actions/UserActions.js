@@ -37,8 +37,7 @@ export function saveUser(user) {
 
 export function getUserList() {
   const request = UserService.getUserList()
-  console.log("request in action :", request)
-  return (dispatch, getState) => {
+    return (dispatch, getState) => {
     request.then((response) => {
       dispatch({
         type: ON_GET_USER_LIST,
@@ -102,22 +101,21 @@ export function deleteUser(userId) {
 }
 
 export function getdeptList() {
-  const request = UserService.getdeptList()
-  return (dispatch, getState) => {
-    request.then((response) => {   
+  const request = UserService.getdepartmentList();
+  console.log("request in action :",request)
+  return (dispatch, getState) => {    
+    request.then((response) => { 
+   
       dispatch({
         type: ON_GET_DEPARTMENT_LIST,
         payload: response.data,
       })
     })
-      .catch((error) => {
-      
+      .catch((error) => {     
         console.log('get dept list error in user action', error)
       })
   }
 }
-
-
 
 
 
