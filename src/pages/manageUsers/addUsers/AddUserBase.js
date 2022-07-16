@@ -6,11 +6,12 @@ import Sidebar from '../../../components/sidebar/Sidebar'
 import {adminMenuItems} from '../../../components/sidebar/MenuItems'
 import Footer from '../../../components/footer/Footer'
 import * as Actions from '../store/actions/UserActions'
+import { useDispatch } from 'react-redux'
 
 const AddUserBase = () => {
+    const dispatch = useDispatch()
     useEffect(() => {
-        Actions.getdeptList();
-        console.log("action call in add user base")
+        dispatch(Actions.getdepartmentList())        
     }, [])
     
 

@@ -29,7 +29,7 @@ let initError = {
 const AddUser = () => {
     const reducerData = useSelector(({ dept }) => dept.manageUsers)
     const deptList = reducerData.deptList;
-    console.log("deptList in form : ",deptList.length);
+    console.log("deptList in form : ",deptList);
     const [formValues, setFormValues] = useState({ ...initialFormValue })
     const [errors, setErrors] = useState({ ...initError })
 
@@ -196,12 +196,14 @@ const AddUser = () => {
                     <select
                         name="department"
                         className='newUserSelect'
-                        value={formValues.department}
+                        // value={formValues.department}
                         onChange={onValueChange}
                     > 
-                    {
-                        deptList.map((dept)=>{
-                            <option value={dept.value}>dept</option> 
+                    {                     
+                        deptList.map((department)=>{    
+                            return(
+                                <option value={department.name}>{department.name}</option> 
+                            )                    
                         })
                     }                    
                     </select>

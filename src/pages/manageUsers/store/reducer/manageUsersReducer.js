@@ -1,6 +1,6 @@
 import {
   ON_GET_USER_LIST,
-  ON_GET_DEPARTMENT_LIST
+  ON_GET_DEPT_LIST
 } from '../actions/UserActions'
 
 const initialState = {
@@ -16,9 +16,9 @@ const manageUsersReducer = function (state = initialState, action) {
         userList: [...action.payload],
       }
     }
-    case ON_GET_DEPARTMENT_LIST: {   
-      console.log("dept list in userReducer : ",action.payload); 
-      return {
+    case ON_GET_DEPT_LIST: {
+      console.log("dept list in userReducer : ",action.payload);
+      return {       
         ...state,
         deptList: [...action.payload],
       }

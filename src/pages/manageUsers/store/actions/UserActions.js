@@ -9,7 +9,7 @@ export const ON_ADD_NEW_USER = '[ON_ADD_NEW_USER] ON_ADD_NEW_USER'
 export const ON_GET_USER_LIST = '[ON_GET_USER_LIST] ON_GET_USER_LIST'
 export const ON_UPDATE_USER = '[ON_UPDATE_USER] ON_UPDATE_USER'
 export const ON_DELETE_USER = '[ON_DELETE_USER] ON_DELETE_USER'
-export const ON_GET_DEPARTMENT_LIST = '[ON_GET_DEPARTMENT_LIST] ON_GET_DEPARTMENT_LIST'
+export const ON_GET_DEPT_LIST = '[ON_GET_DEPT_LIST] ON_GET_DEPT_LIST'
 
 
 export function saveUser(user) {
@@ -37,7 +37,7 @@ export function saveUser(user) {
 
 export function getUserList() {
   const request = UserService.getUserList()
-    return (dispatch, getState) => {
+  return (dispatch, getState) => {
     request.then((response) => {
       dispatch({
         type: ON_GET_USER_LIST,
@@ -57,7 +57,7 @@ export function updateUser(updatedUser) {
   return (dispatch, getState) => {
     return request
       .then((response) => {
-        if (response.data == 1) {
+        if (response.data === 1) {
           toast.success('Successfully Updated', {
             position: toast.POSITION.TOP_CENTER,
             autoClose: 2000,
@@ -81,7 +81,7 @@ export function deleteUser(userId) {
   return (dispatch, getState) => {
     return request
       .then((response) => {
-        if (response.data == "Successfully deleted user") {
+        if (response.data === "Successfully deleted user") {
           toast.success('Successfully Deleted', {
             position: toast.POSITION.TOP_CENTER,
             autoClose: 2000,
@@ -100,22 +100,22 @@ export function deleteUser(userId) {
   }
 }
 
-export function getdeptList() {
-  const request = UserService.getdepartmentList();
-  console.log("request in action :",request)
+export function getdepartmentList() {
+  const request = UserService.getdepartmentList()
   return (dispatch, getState) => {    
     request.then((response) => { 
-   
+      console.log("responce data in user action:",response.data)
       dispatch({
-        type: ON_GET_DEPARTMENT_LIST,
+        type: ON_GET_DEPT_LIST,
         payload: response.data,
       })
     })
       .catch((error) => {     
-        console.log('get dept list error in user action', error)
+        console.log('get dept list error', error)
       })
   }
 }
+
 
 
 
