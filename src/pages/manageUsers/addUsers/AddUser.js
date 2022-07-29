@@ -202,7 +202,7 @@ const AddUser = () => {
                     {                     
                         deptList.map((department)=>{    
                             return(
-                                <option value={department.name}>{department.name}</option> 
+                                <option value={department.name.toLowerCase()}>{department.name}</option> 
                             )                    
                         })
                     }                    

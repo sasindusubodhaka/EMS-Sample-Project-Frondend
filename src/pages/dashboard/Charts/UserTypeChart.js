@@ -36,16 +36,17 @@ const UserTypeChart = () => {
   const reducerData = useSelector(({ userType }) => userType.adminDashboard);
   const adminDataItems = reducerData.deptWiseUserCount;
   const materializeUIClasses = useStyles();
-  console.log()
+  console.log("adminDataItems :",adminDataItems)
   let usersData = [];
+  let deptList =[];
   adminDataItems && adminDataItems.map((users) => {
     usersData.push(users.value);
+    deptList.push(users.name);
   })
   const state = {
-    labels: ['IT', 'Sales', 'HR'],
+    labels: deptList,
     datasets: [
-      {
-        // label: 'Rainfall',
+      {       
         backgroundColor: [
           '#28B1D6',
           '#66F1BD',

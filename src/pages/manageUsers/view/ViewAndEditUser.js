@@ -12,7 +12,7 @@ Modal.setAppElement('#root')
 const ViewAndEditUser = ({ userDetails, deptList }) => {
     const dispatch = useDispatch()
     const [modalIsopen, setmodalIsopen] = useState(false);
-    console.log("user details :",userDetails)
+    console.log("user details :", userDetails)
 
     let initFormValues = {
         userId: `${userDetails.userId}`,
@@ -234,18 +234,18 @@ const ViewAndEditUser = ({ userDetails, deptList }) => {
                                     </div>
                                     <div className='userUpdateItem'>
                                         <label>Department</label>
-                                        <select name="departments"
+                                        <select
+                                            name="department"
                                             className="userUpdateSelect"
                                             id="department"
-                                            // value={formValues.department}
-                                            onChange={onValueChange}
-                                        
+                                            value={formValues.department}   
+                                            onChange={onValueChange}                                     
 
                                         >
                                             {
                                                 deptList.map((department) => {
                                                     return (
-                                                        <option value={department.name}>{department.name}</option>
+                                                        <option value={department.name.toLowerCase()}>{department.name}</option>
                                                     )
                                                 })
                                             }
