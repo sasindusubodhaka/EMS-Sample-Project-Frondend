@@ -9,9 +9,10 @@ import * as Actions from '../store/actions/UserActions'
 Modal.setAppElement('#root')
 
 
-const ViewAndEditUser = ({ userDetails }) => {
+const ViewAndEditUser = ({ userDetails, deptList }) => {
     const dispatch = useDispatch()
     const [modalIsopen, setmodalIsopen] = useState(false);
+    console.log("user details :",userDetails)
 
     let initFormValues = {
         userId: `${userDetails.userId}`,
@@ -236,13 +237,18 @@ const ViewAndEditUser = ({ userDetails }) => {
                                         <select name="departments"
                                             className="userUpdateSelect"
                                             id="department"
-                                            value={formValues.department}
+                                            // value={formValues.department}
                                             onChange={onValueChange}
-                                            name="department"
+                                        
+
                                         >
-                                            <option selected value="sales">Sales</option>
-                                            <option value="hr">HR</option>
-                                            <option value="it">IT</option>
+                                            {
+                                                deptList.map((department) => {
+                                                    return (
+                                                        <option value={department.name}>{department.name}</option>
+                                                    )
+                                                })
+                                            }
                                         </select>
                                     </div>
                                     <div className='userUpdateItem'>

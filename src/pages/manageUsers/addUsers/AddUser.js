@@ -48,7 +48,7 @@ const AddUser = () => {
         const isValid = validation()
         if (isValid) {
             console.log('formValues before submit', formValues)
-            // dispatch(Actions.saveUser(formValues))
+            dispatch(Actions.saveUser(formValues))
         } else {
             console.log('fail')
         }

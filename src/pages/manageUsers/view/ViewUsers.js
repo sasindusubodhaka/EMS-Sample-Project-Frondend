@@ -15,6 +15,7 @@ toast.configure()
 const ViewUsers = () => {
   const reducerData = useSelector(({ users }) => users.manageUsers)
   const userList = reducerData.userList;
+  const deptList = reducerData.deptList;
 
   const dispatch = useDispatch()
 
@@ -91,7 +92,7 @@ const ViewUsers = () => {
 
         return (
           <>
-            <ViewUser userDetails={userDetails} />
+            <ViewUser userDetails={userDetails} deptList={deptList}/>
             <button type='submit' onClick={() => onDelete(userDetails.userId, userDetails.firstName)}> <DeleteForever className='userListDelete' /></button>
 
           </>

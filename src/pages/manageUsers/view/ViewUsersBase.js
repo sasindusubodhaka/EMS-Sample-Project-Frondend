@@ -13,6 +13,7 @@ const ViewUsersBase = () => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(Actions.getUserList())
+        dispatch(Actions.getdepartmentList())
         
     }, [])
 
